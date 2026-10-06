@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-cicd-demo
+  namespace: devops-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-cicd-demo
+  template:
+    metadata:
+      labels:
+        app: devops-cicd-demo
+    spec:
+      containers:
+        - name: devops-cicd-demo
+          image: 269985663148.dkr.ecr.us-east-1.amazonaws.com/devops-cicd-demo:2
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
